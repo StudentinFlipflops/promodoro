@@ -1,5 +1,5 @@
 import tkinter as tk
-import time
+from playsound import playsound
 
 segment_patterns = [
     "abcdef",  # 0
@@ -25,7 +25,7 @@ segment_coords = {
 }
 
 def ring():
-    print("ring")
+    playsound("/home/adam/programs/my-projects/mpts/sound/ring.mp3")
 
 def count_down(minutes, seconds, canvas, hours , break_time):
     
@@ -41,14 +41,16 @@ def count_down(minutes, seconds, canvas, hours , break_time):
         ring()
         print("break time")
         hours+=1
-        minutes = 0
-        seconds = 5
+        minutes = 15
+        seconds = 0
         break_time = True
+        print("you work " , hours , "hours")
+
     elif minutes < 0 and break_time == True:
         ring()
         print("study time")
-        minutes = 0
-        seconds = 10
+        minutes = 45
+        seconds = 0
         break_time = False
 
         
@@ -99,8 +101,8 @@ def create_window():
     canvas.create_rectangle(150 ,80 , 160 , 90 , fill="red"  )
 
 
-    countdown_minutes = 0
-    countdown_seconds = 5
+    countdown_minutes = 45
+    countdown_seconds = 0
     working_hours = 0
     break_time = False
     count_down(countdown_minutes, countdown_seconds, canvas, working_hours , break_time)
@@ -109,3 +111,13 @@ def create_window():
 
 
 create_window()
+
+
+# *** DONE *** # TODO: add ring sound 
+# TODO: save working/studying hours with the dates they were saved
+
+
+# Ideas for the future:
+# -button to confirm presence
+# -the ability to view learning and work statistics
+#
